@@ -29,3 +29,11 @@ target_link_libraries(question_4 ${OpenCV_LIBS})
 add_executable(question_5 question_5.cpp)
 # 链接OpenCV库
 target_link_libraries(question_5 ${OpenCV_LIBS})
+
+add_executable(question_6 question_6.cpp)
+# 链接OpenCV库
+target_link_libraries(question_6 ${OpenCV_LIBS})
+
+add_executable(test test.cpp)
+# 链接OpenCV库
+target_link_libraries(test ${OpenCV_LIBS})
