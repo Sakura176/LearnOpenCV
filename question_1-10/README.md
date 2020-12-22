@@ -202,7 +202,7 @@ $$
 
 我们将这种把图片使用均等大小网格分割，并求网格内代表值的操作称为**池化（Pooling）**。
 
-池化操作是**卷积神经网络（Convolutional Neural Network）**中重要的图像处理方式。平均池化按照下式定义：
+池化操作是**卷积神经网络(Convolutional Neural Network)** 中重要的图像处理方式。平均池化按照下式定义：
 $$
 v=\frac{1}{|R|}\  \sum\limits_{i=1}^R\ v_i
 $$
