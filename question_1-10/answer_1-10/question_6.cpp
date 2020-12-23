@@ -2,8 +2,6 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#define change(pixel, value) pixel = (pixel < value && pixel >= value - 64) ? value - 32 : pixel 
-
 cv::Mat decrease_color(const cv::Mat image);
 
 int main(int argc, char const *argv[])
@@ -29,11 +27,11 @@ cv::Mat decrease_color(const cv::Mat image)
     {
         for (int i = 0; i < width; ++i)
         {
-            for( int c = 0; c < channel; ++c)
+            for (int c = 0; c < channel; ++c)
             {
                 temp = img.at<cv::Vec3b>(j, i)[c];
                 img.at<cv::Vec3b>(j, i)[c] = (temp / 64) * 64 + 32;
-            } 
+            }
         }
     }
     return img;
