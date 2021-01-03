@@ -46,6 +46,9 @@ add_executable(question_9 question_9.cpp)
 # 链接OpenCV库
 target_link_libraries(question_9 ${OpenCV_LIBS})
 
+add_executable(question_10 question_10.cpp)
+target_link_libraries(question_10 ${OpenCV_LIBS})
+
 add_executable(test test.cpp)
 # 链接OpenCV库
 target_link_libraries(test ${OpenCV_LIBS})
