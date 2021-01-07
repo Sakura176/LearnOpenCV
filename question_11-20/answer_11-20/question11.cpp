@@ -20,8 +20,9 @@ cv::Mat mean_filter(cv::Mat image, cv::Size ksize)
     int height = image.rows;
     int channel = image.channels();
 
-    int center = (ksize.width + 1) / 2;
+    int center = (ksize.width - 1) / 2;
     cv::Mat out = cv::Mat::zeros(height, width, CV_8UC3);
+    double sum = 0;
 
     for (int j = 0; j < height; j++)
     {
@@ -29,8 +30,8 @@ cv::Mat mean_filter(cv::Mat image, cv::Size ksize)
         {
             for (int c = 0; c < channel; c++)
             {
-                int sum = 0;
-                double mean_value = 0;
+                sum = 0;
+                //double mean_value = 0;
                 for (int _j = -center; _j < center + 1; _j++)
                 {
                     for (int _i = -center; _i < center + 1; _i++)
@@ -41,8 +42,8 @@ cv::Mat mean_filter(cv::Mat image, cv::Size ksize)
                         }
                     }
                 }
-                mean_value = sum / (ksize.width * ksize.height);
-                out.at<cv::Vec3b>(j, i)[c] = uchar(mean_value);
+                sum /= (ksize.width * ksize.height);
+                out.at<cv::Vec3b>(j, i)[c] = uchar(sum);
             }
         }
     }
