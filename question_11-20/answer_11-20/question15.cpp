@@ -32,7 +32,6 @@ cv::Mat sobel_filter(cv::Mat image, cv::Size ksize, bool horzontal)
     int height = image.rows;
 
     cv::Mat out = cv::Mat::zeros(height, width, CV_8UC1);
-    // 如果将第六个常量改为1，图像会变清晰
     cv::Mat fliter = cv::Mat::zeros(ksize, CV_8SC1);
     fliter.at<char>(0, 0) = 1;
     fliter.at<char>(0, 1) = 2;
