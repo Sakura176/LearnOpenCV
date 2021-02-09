@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.0)
 # 添加C++11标准
 set(CMAKE_CXX_FLAGS "-std=c++11")
 
+set(CMAKE_BUILD_TYPE Debug)
+
 project(question_11-20)
 
 find_package(OpenCV REQUIRED)
@@ -16,6 +18,9 @@ target_link_libraries(question12 ${OpenCV_LIBS})
 
 add_executable(question13 question13.cpp)
 target_link_libraries(question13 ${OpenCV_LIBS})
+
+add_executable(question14 question14.cpp)
+target_link_libraries(question14 ${OpenCV_LIBS})
 
 add_executable(test test.cpp)
 target_link_libraries(test ${OpenCV_LIBS})
