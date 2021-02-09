@@ -2,6 +2,17 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+/***
+ * @description: Sobel滤波器 可以提取特定方向的边缘
+ * @param image 输入图片
+ * @param ksize 滤波器的大小
+ * @param horzontal 纵向或横向滤波器
+ * @return Mat
+ *     纵向        横向
+ * | 1  2  1 |  | 1 0 -1 |
+ * | 0  0  0 |  | 2 0 -2 |
+ * |-1 -2 -1 |  | 1 0 -1 |
+ */
 cv::Mat sobel_filter(cv::Mat image, cv::Size ksize, bool horzontal=true);
 
 int main(int argc, char const *argv[])
@@ -29,7 +40,7 @@ cv::Mat sobel_filter(cv::Mat image, cv::Size ksize, bool horzontal)
     fliter.at<char>(2, 0) = -1;
     fliter.at<char>(2, 1) = -2;
     fliter.at<char>(2, 2) = -1;
-    
+
     int center = (ksize.height - 1) / 2;
     if (!horzontal)
     {
