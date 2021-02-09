@@ -2,23 +2,12 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-/***
- * @description: 差分滤波器
- * @param image 输入图片
- * @param ksize 滤波器的大小
- * @param horzontal 纵向或横向滤波器
- * @return Mat
- *     纵向        横向
- * | 0 -1 0 |  | 0 0 0 |
- * | 0 1  0 |  |-1 1 0 |
- * | 0 0  0 |  | 0 0 0 |
- */
-cv::Mat diff_filter(cv::Mat image, cv::Size ksize, bool horzontal=true);
+cv::Mat sobel_filter(cv::Mat image, cv::Size ksize, bool horzontal=true);
 
 int main(int argc, char const *argv[])
 {
     cv::Mat image = imread(argv[1], cv::IMREAD_GRAYSCALE);
-    cv::Mat out = diff_filter(image, cv::Size(3, 3), false);
+    cv::Mat out = sobel_filter(image, cv::Size(3, 3), false);
     imshow("image", image);
     imshow("out", out);
     cv::waitKey(0);
@@ -26,7 +15,7 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
-cv::Mat diff_filter(cv::Mat image, cv::Size ksize, bool horzontal)
+cv::Mat sobel_filter(cv::Mat image, cv::Size ksize, bool horzontal)
 {
     int width = image.cols;
     int height = image.rows;
@@ -34,8 +23,13 @@ cv::Mat diff_filter(cv::Mat image, cv::Size ksize, bool horzontal)
     cv::Mat out = cv::Mat::zeros(height, width, CV_8UC1);
     // 如果将第六个常量改为1，图像会变清晰
     cv::Mat fliter = cv::Mat::zeros(ksize, CV_8SC1);
-    fliter.at<char>(0, 1) = -1;
-    fliter.at<char>(1, 1) = 1; 
+    fliter.at<char>(0, 0) = 1;
+    fliter.at<char>(0, 1) = 2;
+    fliter.at<char>(1, 2) = 1;
+    fliter.at<char>(2, 0) = -1;
+    fliter.at<char>(2, 1) = -2;
+    fliter.at<char>(2, 2) = -1;
+    
     int center = (ksize.height - 1) / 2;
     if (!horzontal)
     {
