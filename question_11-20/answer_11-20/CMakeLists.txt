@@ -28,5 +28,10 @@ target_link_libraries(question15 ${OpenCV_LIBS})
 add_executable(question16 question16.cpp)
 target_link_libraries(question16 ${OpenCV_LIBS})
 
+add_executable(question17 question17.cpp)
+target_link_libraries(question17 ${OpenCV_LIBS})
+
+add_executable(question18 question18.cpp)
+target_link_libraries(question18 ${OpenCV_LIBS})
 add_executable(test test.cpp)
 target_link_libraries(test ${OpenCV_LIBS})
