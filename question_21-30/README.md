@@ -30,6 +30,7 @@ a& (\text{if}\quad x_{in}<c)\\
 b&(\text{else})
 \end{cases}
 $$
+**注意：** c为图像像素最小值， d为图像像素最大值
 
 | 输入 (imori_dark.jpg) |   输出 (answers/answer_21_1.jpg)   | 直方图(answers_image/answer_21_2.png) |
 | :-------------------: | :--------------------------------: | :-----------------------------------: |
@@ -49,6 +50,9 @@ $$
 可以使用下式将平均值为$m$标准差为$s$的直方图变成平均值为$m_0$标准差为$s_0$的直方图：
 $$
 x_{out}=\frac{s_0}{s}\  (x_{in}-m)+m_0
+$$
+$$
+s_0 = \sqrt{\frac{\sum^n_{i=1}(x_i - \bar{x})^2}{n} }
 $$
 
 | 输入 (imori_dark.jpg) | 输出 (answers_image/answer_22_1.jpg) | 直方图(answers_image//answer_22_2.png) |
@@ -70,7 +74,7 @@ $$
 $$
 Z' = \frac{Z_{max}}{S} \  \sum\limits_{i=0}^z\ h(i)
 $$
-
+**累积分布函数具体如何计算**
 | 输入 (imori.jpg) |   输出 (answers/answer_23_1.jpg)   | 直方图(answers_image/answer_23_2.png) |
 | :--------------: | :--------------------------------: | :-----------------------------------: |
 |  ![](imori.jpg)  | ![](answers_image/answer_23_1.jpg) |  ![](answers_image/answer_23_2.png)   |

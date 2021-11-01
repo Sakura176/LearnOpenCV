@@ -84,7 +84,6 @@ cv::Mat GaussianFilter(cv::Mat &image, double sigma, cv::Size ksize)
                         }
                     }
                 }
-                // ? 左值为uchar类型，右值为double类型，没出现问题？
                 out.at<cv::Vec3b>(j, i)[c] = cal;
             }
         }
