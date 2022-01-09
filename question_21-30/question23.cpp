@@ -1,7 +1,6 @@
 #include <iostream>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
-#include <boost/format.hpp>
 #include <math.h>
 
 cv::Mat histogram_equalization(cv::Mat img);
