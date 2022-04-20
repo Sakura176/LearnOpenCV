@@ -11,10 +11,10 @@ int main(int argc, char const *argv[])
     //     std::cout << "请输入正确的图像路径！";
     //     return 0;
     // }
-    cv::Mat image = imread("./imori.jpg", cv::IMREAD_COLOR);
+    cv::Mat img = imread("../imori.jpg", cv::IMREAD_COLOR);
     // std::cout << image << std::endl;
-    cv::Mat out = nn_interpolation(image, 1.5, 1.5);
-    imshow("image", image);
+    cv::Mat out = nn_interpolation(img, 1.5, 1.5);
+    imshow("image", img);
     imshow("out", out);
     cv::waitKey(0);
     cv::destroyAllWindows();
@@ -28,28 +28,31 @@ cv::Mat nn_interpolation(cv::Mat image, double ratio_x, double ratio_y)
     int height = image.rows;
     int channels = image.channels();
 
-    int r_width = int(width * ratio_x) + 1;
-    int r_height = int(height * ratio_y) + 1;
+    int r_width = int(width * ratio_x);
+    int r_height = int(height * ratio_y);
     int x, y;
 
+    std::cout << r_width << "\t \t" << r_height << std::endl;
     // std::cout << image.at<cv::Vec3d>(79, 127);
     cv::Mat out = cv::Mat::zeros(r_height, r_width, CV_8UC3);
 
     for (int j = 0; j < r_width; j++)
     {
         y = (int)round(j / ratio_y);
-        y = fmin(y, width);
+        y = fmin(y, width-1);
 
         for (int i = 0; i < r_height; i++)
         {
             x = (int)round(i / ratio_x);
-            x = fmin(x, height);
+            x = fmin(x, height-1);
 
             for (int c = 0; c < channels; c++)
             {
-                std::cout << x << " " << y << std::endl;
-                char temp = image.at<cv::Vec3d>(x, y)[c];
-                out.at<cv::Vec3d>(i, j)[c] = temp;
+                // std::cout << i << "\t \t" << j << std::endl;
+                // std::cout << x << "\t \t" << y << std::endl;
+                // char temp = image.at<cv::Vec3d>(x, y)[c];
+                // std::cout << "temp: " << temp << std::endl;
+                out.at<cv::Vec3b>(i, j)[c] = image.at<cv::Vec3b>(x, y)[c];
             }
         }
     }
