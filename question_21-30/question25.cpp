@@ -22,6 +22,15 @@ int main(int argc, char const *argv[])
     return 0;
 }
 
+
+/**
+ * @brief 最近邻插值，用于对图像进行上采样，速度较快，但画质会明显的劣化
+ * 
+ * @param image 输入图像
+ * @param ratio_x x轴放大倍率
+ * @param ratio_y y轴放大倍率
+ * @return cv::Mat 放大后的图像
+ */
 cv::Mat nn_interpolation(cv::Mat image, double ratio_x, double ratio_y)
 {
     int width = image.cols;
@@ -32,7 +41,7 @@ cv::Mat nn_interpolation(cv::Mat image, double ratio_x, double ratio_y)
     int r_height = int(height * ratio_y);
     int x, y;
 
-    std::cout << r_width << "\t \t" << r_height << std::endl;
+    // std::cout << r_width << "\t \t" << r_height << std::endl;
     // std::cout << image.at<cv::Vec3d>(79, 127);
     cv::Mat out = cv::Mat::zeros(r_height, r_width, CV_8UC3);
 
