@@ -10,6 +10,6 @@ find_package(OpenCV 4 REQUIRED)
 include_directories(
         ${OpenCV_INCLUDE_DIRS})
 
-add_executable(myinpaint inpaint.cpp)
+add_executable(myinpaint test.cpp)
 
 target_link_libraries(myinpaint ${OpenCV_LIBS})
